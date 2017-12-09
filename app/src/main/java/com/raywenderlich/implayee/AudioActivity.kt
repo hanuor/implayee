@@ -24,7 +24,6 @@ import android.widget.Button
  */
 class AudioActivity : AppCompatActivity() {
     var playPauseAudio: Button? = null
-    var pauseAudio: Button? = null
     var restartAudio: Button? = null
     val mp = MediaPlayer()
     override fun onCreate(savedInstanceState: Bundle?) {

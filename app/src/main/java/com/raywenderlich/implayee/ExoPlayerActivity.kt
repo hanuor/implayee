@@ -5,14 +5,11 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.google.android.exoplayer2.ExoPlayerFactory
 import com.google.android.exoplayer2.SimpleExoPlayer
-import com.google.android.exoplayer2.Timeline
 import com.google.android.exoplayer2.extractor.DefaultExtractorsFactory
 import com.google.android.exoplayer2.source.ExtractorMediaSource
-import com.google.android.exoplayer2.source.MediaSource
 import com.google.android.exoplayer2.trackselection.AdaptiveTrackSelection
 import com.google.android.exoplayer2.trackselection.DefaultTrackSelector
 import com.google.android.exoplayer2.ui.SimpleExoPlayerView
-import com.google.android.exoplayer2.upstream.DataSource
 import com.google.android.exoplayer2.upstream.DefaultBandwidthMeter
 import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory
 import com.google.android.exoplayer2.util.Util
@@ -20,11 +17,6 @@ import com.google.android.exoplayer2.util.Util
 class ExoPlayerActivity : AppCompatActivity() {
 
     private var simpleExoPlayerView: SimpleExoPlayerView? = null
-    private var window: Timeline.Window? = null
-    private var mediaDataSourceFactory: DataSource.Factory? = null
-    private var trackSelector: DefaultTrackSelector? = null
-    private var shouldAutoPlay: Boolean = false
-    var mediaSource: MediaSource? = null
     var exoPlayer: SimpleExoPlayer? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
