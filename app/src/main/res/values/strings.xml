@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Implayee</string>
+    <string name="play">Play</string>
+    <string name="pause">Pause</string>
+    <string name="play_error">Cannot play the video right now</string>
+    <string name="audio_play">Play Audio</string>
+    <string name="audio_pause">Pause Audio</string>
 </resources>

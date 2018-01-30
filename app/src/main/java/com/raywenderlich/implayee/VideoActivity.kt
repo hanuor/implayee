@@ -1,3 +1,8 @@
+/*
+ * Copyright 2018 Google, Inc.
+ *
+ * ...
+ */
 package com.raywenderlich.implayee
 
 import android.media.MediaPlayer
@@ -12,16 +17,16 @@ import android.widget.Toast
 
 class VideoActivity : AppCompatActivity() {
 
-    var mp: MediaPlayer? = null
+    private var mp: MediaPlayer? = null
     private var playPauseButton: Button? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_video)
-        try{
-        mp = MediaPlayer.create(this, R.raw.sample_video)
-        }catch(e: Exception){
+        try {
+            mp = MediaPlayer.create(this, R.raw.sample_video)
+        } catch (e: Exception) {
             e.printStackTrace()
-            Toast.makeText(this, "Can't play the video right now", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, this.getString(R.string.play_error), Toast.LENGTH_SHORT).show()
         }
         val sv = findViewById<View>(R.id.surfaceView) as SurfaceView
         playPauseButton = findViewById(R.id.playPauseButton)
@@ -29,24 +34,21 @@ class VideoActivity : AppCompatActivity() {
         playPauseButton?.setOnClickListener({
             if (mp?.isPlaying as Boolean) {
                 mp?.pause()
-                playPauseButton?.text = "Play"
+                playPauseButton?.text = this.getString(R.string.play)
             } else {
                 mp?.start()
-                playPauseButton?.text = "Pause"
+                playPauseButton?.text = this.getString(R.string.pause)
             }
         })
         val holder = sv.holder
         holder.addCallback(object : SurfaceHolder.Callback {
             override fun surfaceChanged(p0: SurfaceHolder?, p1: Int, p2: Int, p3: Int) {
-                // TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
             }
 
             override fun surfaceDestroyed(p0: SurfaceHolder?) {
-                //   TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
             }
 
             override fun surfaceCreated(p0: SurfaceHolder?) {
-                //TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
                 mp?.setDisplay(holder)
                 mp?.start()
             }

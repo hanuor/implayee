@@ -1,3 +1,8 @@
+/*
+ * Copyright 2018 Google, Inc.
+ *
+ * ...
+ */
 package com.raywenderlich.implayee
 
 import android.net.Uri
@@ -17,7 +22,7 @@ import com.google.android.exoplayer2.util.Util
 class ExoPlayerActivity : AppCompatActivity() {
 
     private var simpleExoPlayerView: SimpleExoPlayerView? = null
-    var exoPlayer: SimpleExoPlayer? = null
+    private var exoPlayer: SimpleExoPlayer? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,7 +32,7 @@ class ExoPlayerActivity : AppCompatActivity() {
 
 
         var bandwidthMeter = DefaultBandwidthMeter()
-        val videoTrackSelectionFactory = AdaptiveTrackSelection.Factory(bandwidthMeter)
+        val videoTrackSelectionFactory: AdaptiveTrackSelection.Factory = AdaptiveTrackSelection.Factory(bandwidthMeter)
         val trackSelector = DefaultTrackSelector(videoTrackSelectionFactory)
         //this is the player
         exoPlayer = ExoPlayerFactory.newSimpleInstance(this, trackSelector)
@@ -35,7 +40,7 @@ class ExoPlayerActivity : AppCompatActivity() {
         simpleExoPlayerView?.player = exoPlayer
         // Produces DataSource instances through which media data is loaded.
         val dataSourceFactory = DefaultDataSourceFactory(this,
-                Util.getUserAgent(this, "implayee"), bandwidthMeter)
+                Util.getUserAgent(this, this.getString(R.string.app_name)), bandwidthMeter)
         // Produces Extractor instances for parsing the media data.
         val extractorsFactory = DefaultExtractorsFactory()
         // This is the MediaSource representing the media to be played.

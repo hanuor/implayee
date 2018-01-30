@@ -1,3 +1,8 @@
+/*
+ * Copyright 2018 Google, Inc.
+ *
+ * ...
+ */
 package com.raywenderlich.implayee
 
 import android.media.MediaPlayer
@@ -7,15 +12,13 @@ import android.support.v7.app.AppCompatActivity
 import android.widget.Button
 
 class AudioActivity : AppCompatActivity() {
-    var playPauseAudio: Button? = null
-    var restartAudio: Button? = null
-    val mp = MediaPlayer()
+    private var playPauseAudio: Button? = null
+    private var restartAudio: Button? = null
+    private val mp = MediaPlayer()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_audio)
-
         //Setting up the mediaplayer to stream Music
-
         val audioDataSource =
                 "android.resource://com.raywenderlich.implayee/" + R.raw.sample_audio
         try {
@@ -42,10 +45,10 @@ class AudioActivity : AppCompatActivity() {
         playPauseAudio?.setOnClickListener({
             if (mp.isPlaying) {
                 mp.pause()
-                playPauseAudio?.text = "Play Audio"
+                playPauseAudio?.text = this.getString(R.string.audio_play)
             } else {
                 mp.start()
-                playPauseAudio?.text = "Pause Audio"
+                playPauseAudio?.text = this.getString(R.string.audio_pause)
             }
 
         })

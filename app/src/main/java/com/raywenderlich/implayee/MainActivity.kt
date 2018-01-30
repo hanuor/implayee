@@ -1,3 +1,8 @@
+/*
+ * Copyright 2018 Google, Inc.
+ *
+ * ...
+ */
 package com.raywenderlich.implayee
 
 import android.content.Intent
@@ -6,9 +11,9 @@ import android.support.v7.app.AppCompatActivity
 import android.widget.Button
 
 class MainActivity : AppCompatActivity() {
-    var playAudioButton: Button? = null
-    var playVideoButton: Button? = null
-    var exoPlayerButton: Button? = null
+    private var playAudioButton: Button? = null
+    private var playVideoButton: Button? = null
+    private var exoPlayerButton: Button? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
