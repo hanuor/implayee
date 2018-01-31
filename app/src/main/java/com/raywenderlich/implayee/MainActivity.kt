@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity() {
         onClicks()
     }
 
-    fun initViews() {
+    private fun initViews() {
         //play audio button (mediaplayer class)
         playAudioButton = findViewById(R.id.playAudioButton)
         //play video button (mediaplayer class)
@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity() {
         exoPlayerButton = findViewById(R.id.exoPlayerButton)
     }
 
-    fun onClicks() {
+    private fun onClicks() {
         playAudioButton?.setOnClickListener({
             var triggerAudio = Intent(this, AudioActivity::class.java)
             startActivity(triggerAudio)

@@ -44,19 +44,14 @@ class VideoActivity : AppCompatActivity() {
         holder.addCallback(object : SurfaceHolder.Callback {
             override fun surfaceChanged(p0: SurfaceHolder?, p1: Int, p2: Int, p3: Int) {
             }
-
             override fun surfaceDestroyed(p0: SurfaceHolder?) {
             }
-
             override fun surfaceCreated(p0: SurfaceHolder?) {
                 mp?.setDisplay(holder)
                 mp?.start()
             }
-
         })
-
     }
-
     override fun onPause() {
         super.onPause()
         //Pausing the mediaplayer to so that it can be resumed when user switches back to the app.
