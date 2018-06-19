@@ -8,6 +8,7 @@ package com.raywenderlich.implayee
 import android.media.MediaPlayer
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.util.Log
 import android.view.SurfaceHolder
 import android.view.SurfaceView
 import android.view.View
@@ -19,6 +20,7 @@ class VideoActivity : AppCompatActivity() {
 
     private var mp: MediaPlayer? = null
     private var playPauseButton: Button? = null
+    private var positionOnPause: Int = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_video)
@@ -41,6 +43,8 @@ class VideoActivity : AppCompatActivity() {
             }
         })
         val holder = sv.holder
+
+        //Callback of Surface view holder.
         holder.addCallback(object : SurfaceHolder.Callback {
             override fun surfaceChanged(p0: SurfaceHolder?, p1: Int, p2: Int, p3: Int) {
             }
@@ -52,12 +56,22 @@ class VideoActivity : AppCompatActivity() {
             }
         })
     }
+
     override fun onPause() {
         super.onPause()
         //Pausing the mediaplayer to so that it can be resumed when user switches back to the app.
         if (null != mp) {
             mp?.pause()
+            positionOnPause = mp?.currentPosition!!
+            mp?.release()
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        mp = MediaPlayer.create(this, R.raw.sample_video)
+        mp?.seekTo(positionOnPause)
+        mp?.start()
     }
 
     override fun onStop() {

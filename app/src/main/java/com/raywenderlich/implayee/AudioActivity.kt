@@ -42,6 +42,7 @@ class AudioActivity : AppCompatActivity() {
     }
 
     private fun onClicks() {
+        //on click operations
         playPauseAudio?.setOnClickListener({
             if (mp.isPlaying) {
                 mp.pause()
@@ -55,6 +56,7 @@ class AudioActivity : AppCompatActivity() {
         restartAudio?.setOnClickListener({
             mp.seekTo(0)
             mp.start()
+            playPauseAudio?.text = "Pause Audio"
         })
     }
 }
