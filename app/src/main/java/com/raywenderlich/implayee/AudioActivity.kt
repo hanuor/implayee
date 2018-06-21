@@ -56,7 +56,7 @@ class AudioActivity : AppCompatActivity() {
         restartAudio?.setOnClickListener({
             mp.seekTo(0)
             mp.start()
-            playPauseAudio?.text = "Pause Audio"
+            playPauseAudio?.text = this.getString(R.string.audio_pause)
         })
     }
 }

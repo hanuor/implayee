@@ -25,14 +25,17 @@ class VideoActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_video)
         try {
+            //instance of mediaplayer
             mp = MediaPlayer.create(this, R.raw.sample_video)
         } catch (e: Exception) {
             e.printStackTrace()
             Toast.makeText(this, this.getString(R.string.play_error), Toast.LENGTH_SHORT).show()
         }
+        //initialization
         val sv = findViewById<View>(R.id.surfaceView) as SurfaceView
         playPauseButton = findViewById(R.id.playPauseButton)
 
+        //play and pause button functionality
         playPauseButton?.setOnClickListener({
             if (mp?.isPlaying as Boolean) {
                 mp?.pause()
@@ -62,6 +65,7 @@ class VideoActivity : AppCompatActivity() {
         //Pausing the mediaplayer to so that it can be resumed when user switches back to the app.
         if (null != mp) {
             mp?.pause()
+            //storing current position of mediaplayer object so that we can use it later in our onResume method
             positionOnPause = mp?.currentPosition!!
             mp?.release()
         }
@@ -70,8 +74,10 @@ class VideoActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         mp = MediaPlayer.create(this, R.raw.sample_video)
+        //seeking to the stored position
         mp?.seekTo(positionOnPause)
         mp?.start()
+        playPauseButton?.text = this.getString(R.string.pause)
     }
 
     override fun onStop() {
