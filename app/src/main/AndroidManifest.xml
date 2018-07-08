@@ -19,7 +19,10 @@
         </activity>
         <activity android:name=".MainActivity" />
         <activity android:name=".AudioActivity" />
-        <activity android:name=".VideoActivity" />
+        <activity
+            android:name=".VideoActivity"
+            android:screenOrientation="landscape" />
+
         <activity android:name=".ExoPlayerActivity" />
 
     </application>

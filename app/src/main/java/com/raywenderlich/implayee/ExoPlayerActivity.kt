@@ -1,8 +1,3 @@
-/*
- * Copyright 2018 Google, Inc.
- *
- * ...
- */
 package com.raywenderlich.implayee
 
 import android.net.Uri
@@ -31,7 +26,7 @@ class ExoPlayerActivity : AppCompatActivity() {
         simpleExoPlayerView?.requestFocus()
 
 
-        var bandwidthMeter = DefaultBandwidthMeter()
+        val bandwidthMeter = DefaultBandwidthMeter()
         val videoTrackSelectionFactory: AdaptiveTrackSelection.Factory = AdaptiveTrackSelection.Factory(bandwidthMeter)
         val trackSelector = DefaultTrackSelector(videoTrackSelectionFactory)
         //this is the player

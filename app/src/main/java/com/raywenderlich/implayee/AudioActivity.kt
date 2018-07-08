@@ -1,8 +1,3 @@
-/*
- * Copyright 2018 Google, Inc.
- *
- * ...
- */
 package com.raywenderlich.implayee
 
 import android.media.MediaPlayer
@@ -14,7 +9,7 @@ import android.widget.Button
 class AudioActivity : AppCompatActivity() {
     private var playPauseAudio: Button? = null
     private var restartAudio: Button? = null
-    private val mp = MediaPlayer()
+    private val mediaPlayer = MediaPlayer()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_audio)
@@ -22,9 +17,9 @@ class AudioActivity : AppCompatActivity() {
         val audioDataSource =
                 "android.resource://com.raywenderlich.implayee/" + R.raw.sample_audio
         try {
-            mp.setDataSource(this, Uri.parse(audioDataSource))
-            mp.prepare()
-            mp.start()
+            mediaPlayer.setDataSource(this, Uri.parse(audioDataSource))
+            mediaPlayer.prepare()
+            mediaPlayer.start()
         } catch (e: Exception) {
             e.printStackTrace()
         }
@@ -44,18 +39,18 @@ class AudioActivity : AppCompatActivity() {
     private fun onClicks() {
         //on click operations
         playPauseAudio?.setOnClickListener({
-            if (mp.isPlaying) {
-                mp.pause()
+            if (mediaPlayer.isPlaying) {
+                mediaPlayer.pause()
                 playPauseAudio?.text = this.getString(R.string.audio_play)
             } else {
-                mp.start()
+                mediaPlayer.start()
                 playPauseAudio?.text = this.getString(R.string.audio_pause)
             }
 
         })
         restartAudio?.setOnClickListener({
-            mp.seekTo(0)
-            mp.start()
+            mediaPlayer.seekTo(0)
+            mediaPlayer.start()
             playPauseAudio?.text = this.getString(R.string.audio_pause)
         })
     }
