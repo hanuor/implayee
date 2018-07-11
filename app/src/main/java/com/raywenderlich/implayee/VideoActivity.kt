@@ -3,6 +3,7 @@ package com.raywenderlich.implayee
 import android.media.MediaPlayer
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.util.Log
 import android.view.SurfaceHolder
 import android.view.SurfaceView
 import android.view.View
@@ -13,7 +14,7 @@ class VideoActivity : AppCompatActivity() {
 
     private var mediaPlayer: MediaPlayer? = null
     private var playPauseButton: Button? = null
-
+    private var stoppageTime = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_video)
@@ -31,6 +32,9 @@ class VideoActivity : AppCompatActivity() {
             } else {
                 mediaPlayer?.start()
                 playPauseButton?.text = this.getString(R.string.pause)
+                mediaPlayer?.setOnCompletionListener {
+                    playPauseButton?.text = this.getString(R.string.play)
+                }
             }
         }
         val holder = sv.holder
@@ -45,7 +49,7 @@ class VideoActivity : AppCompatActivity() {
 
             override fun surfaceCreated(p0: SurfaceHolder?) {
                 mediaPlayer?.setDisplay(holder)
-                mediaPlayer?.start()
+                playPauseButton?.text = this@VideoActivity.getString(R.string.play)
             }
         })
     }
@@ -55,19 +59,18 @@ class VideoActivity : AppCompatActivity() {
         //Pausing the mediaplayer to so that it can be resumed when user switches back to the app.
         if (null != mediaPlayer) {
             mediaPlayer?.pause()
-
+            stoppageTime = mediaPlayer?.currentPosition as Int
         }
     }
 
     override fun onResume() {
         super.onResume()
-
-        //seeking to the stored position
-        mediaPlayer?.seekTo(0)
-        mediaPlayer?.start()
-        playPauseButton?.text = this.getString(R.string.pause)
-
-
+        if (stoppageTime > 0) {
+            //seeking to the stored position
+            Log.d("vv","d")
+            mediaPlayer?.seekTo(stoppageTime)
+            playPauseButton?.text = this.getString(R.string.pause)
+        }
     }
 
 

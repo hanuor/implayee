@@ -4,15 +4,13 @@ import android.media.MediaPlayer
 import android.net.Uri
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.util.Log
 import android.widget.Button
-import android.widget.Toast
 
 class AudioActivity : AppCompatActivity() {
     private var playPauseAudio: Button? = null
     private var restartAudio: Button? = null
     private var mediaPlayer: MediaPlayer? = null
-    private var stoppageTime = 0;
+    private var stoppageTime = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_audio)

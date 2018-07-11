@@ -1,8 +1,3 @@
-/*
- * Copyright 2018 Google, Inc.
- *
- * ...
- */
 package com.raywenderlich.implayee
 
 import android.content.Intent
@@ -31,17 +26,17 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun onClicks() {
-        playAudioButton?.setOnClickListener({
-            var triggerAudio = Intent(this, AudioActivity::class.java)
+        playAudioButton?.setOnClickListener {
+            val triggerAudio = Intent(this, AudioActivity::class.java)
             startActivity(triggerAudio)
-        })
-        playVideoButton?.setOnClickListener({
-            var triggerVideo = Intent(this, VideoActivity::class.java)
+        }
+        playVideoButton?.setOnClickListener {
+            val triggerVideo = Intent(this, VideoActivity::class.java)
             startActivity(triggerVideo)
-        })
-        exoPlayerButton?.setOnClickListener({
-            var triggerExo = Intent(this, ExoPlayerActivity::class.java)
+        }
+        exoPlayerButton?.setOnClickListener {
+            val triggerExo = Intent(this, ExoPlayerActivity::class.java)
             startActivity(triggerExo)
-        })
+        }
     }
 }

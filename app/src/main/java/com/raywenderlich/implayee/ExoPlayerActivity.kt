@@ -22,7 +22,7 @@ class ExoPlayerActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_exo_player)
-        simpleExoPlayerView = findViewById<SimpleExoPlayerView>(R.id.player_view)
+        simpleExoPlayerView = findViewById(R.id.player_view)
         simpleExoPlayerView?.requestFocus()
 
 
