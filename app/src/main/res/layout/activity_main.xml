@@ -1,45 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+<RelativeLayout android:background="@color/colorBlack"
     android:layout_height="match_parent"
-    tools:context="com.raywenderlich.implayee.MainActivity">
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:background="@color/colorBlack"
-        android:layout_height="match_parent">
+    <Button
+        android:id="@+id/playAudioButton"
+        android:layout_above="@+id/playVideoButton"
+        android:layout_alignLeft="@+id/playVideoButton"
+        android:layout_alignStart="@+id/playVideoButton"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="11dp"
+        android:layout_width="wrap_content"
+        android:text="Audio"
+        android:textAllCaps="false" />
 
-        <Button
-            android:id="@+id/playAudioButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_above="@+id/playVideoButton"
-            android:layout_alignLeft="@+id/playVideoButton"
-            android:layout_alignStart="@+id/playVideoButton"
-            android:layout_marginBottom="11dp"
-            android:textAllCaps="false"
-            android:text="Play Audio" />
+    <Button
+        android:id="@+id/playVideoButton"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:text="Video"
+        android:textAllCaps="false" />
 
-        <Button
-            android:id="@+id/playVideoButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:textAllCaps="false"
-            android:text="Play Video" />
+    <Button
+        android:id="@+id/exoPlayerButton"
+        android:layout_below="@+id/playVideoButton"
+        android:layout_centerHorizontal="true"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="11dp"
+        android:layout_width="wrap_content"
+        android:text="Video using ExoPlayer"
+        android:textAllCaps="false" />
+</RelativeLayout>
 
-        <Button
-            android:id="@+id/exoPlayerButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/playVideoButton"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="11dp"
-            android:textAllCaps="false"
-            android:text="Play Video using ExoPlayer" />
-    </RelativeLayout>
-
-
-</android.support.constraint.ConstraintLayout>

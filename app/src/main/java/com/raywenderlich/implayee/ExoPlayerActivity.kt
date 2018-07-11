@@ -46,9 +46,8 @@ class ExoPlayerActivity : AppCompatActivity() {
         exoPlayer?.prepare(videoSource)
     }
 
-    override fun onStop() {
-        super.onStop()
+    override fun onDestroy() {
+        super.onDestroy()
         exoPlayer?.release()
     }
-
 }

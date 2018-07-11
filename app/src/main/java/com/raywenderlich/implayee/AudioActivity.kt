@@ -65,6 +65,7 @@ class AudioActivity : AppCompatActivity() {
     override fun onPause() {
         super.onPause()
         mediaPlayer?.pause()
+        //getting current position (integer) of mediaplayer
         stoppageTime = mediaPlayer?.currentPosition as Int
         playPauseAudio?.text = this.getString(R.string.audio_play)
     }
