@@ -33,7 +33,7 @@ class AudioActivity : AppCompatActivity() {
 
         //restart Audio button
         restartAudio = findViewById(R.id.restartAudio)
-        playPauseAudio?.text = this.getString(R.string.audio_play)
+//        playPauseAudio?.text = this.getString(R.string.audio_play)
 
     }
 
